@@ -277,10 +277,24 @@ class MangaDexConnection(mangaDb: MangaDatabase? = null){
         val chapters: List<JsonElement> = listOf();
         val offset = 0
         val totalChapters = null
+
+        val defaultParams = getDefaultRequestParameters().jsonObject.toMutableMap();
         while(true){
             if((totalChapters != null) && (totalChapters <= offset)){
                 break
             }
+            defaultParams["manga"] = JsonPrimitive(mangaIdentifier)
+            defaultParams["limit"] = JsonPrimitive(100)
+            defaultParams["offset"] = JsonPrimitive(offset)
+            defaultParams["translatedLanguage[]"] = JsonPrimitive(language)
+
+
+
+
+
+
+
+
             // TODO: FINISH (Github/lmdx Line:840:app.py)
         }
     }
